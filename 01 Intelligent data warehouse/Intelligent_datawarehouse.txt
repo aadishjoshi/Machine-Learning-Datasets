@@ -1,0 +1,74 @@
+Question	Query
+"Look at the ""Customers"" table"	SELECT * FROM Customers
+"select all the records in the ""Customers"" table"	SELECT * FROM Customers
+"list the ""CustomerName"" and ""City"" columns from the ""Customers"" table"	"SELECT CustomerName, City FROM Customers"
+"select all with duplicate values from the ""Country"" column in the ""Customers"" table"	SELECT Country FROM Customers
+"select only the DISTINCT values from the ""Country"" column in the ""Customers"" table"	SELECT DISTINCT Country FROM Customers
+list the number of different customer countries	SELECT COUNT(DISTINCT Country) FROM Customers
+"select all the customers from the country ""Mexico"", in the ""Customers"" table"	SELECT * FROM Customers WHERE Country='Mexico'
+"select all fields from ""Customers"" where country is ""Germany"" AND city is ""Berlin"""	SELECT * FROM Customers WHERE Country='Germany' AND City='Berlin'
+"select all fields from ""Customers"" where city is ""Berlin"" OR ""München"""	SELECT * FROM Customers WHERE City='Berlin' OR City='München'
+"list all fields from ""Customers"" where country is ""Germany"" OR ""Spain"""	"SELECT * FROM Customers
+WHERE Country='Germany' OR Country='Spain'"
+"select all fields from ""Customers"" where country is NOT ""Germany"""	"SELECT * FROM Customers
+WHERE NOT Country='Germany'"
+"select all fields from ""Customers"" where country is ""Germany"" AND city must be ""Berlin"" OR ""München"""	"SELECT * FROM Customers
+WHERE Country='Germany' AND (City='Berlin' OR City='München')"
+"list all fields from ""Customers"" where country is NOT ""Germany"" and NOT ""USA"""	"SELECT * FROM Customers
+WHERE NOT Country='Germany' AND NOT Country='USA'"
+"select all customers from the ""Customers"" table, sorted by the ""Country"" column"	"SELECT * FROM Customers
+ORDER BY Country"
+"select all customers from the ""Customers"" table, sorted DESCENDING by the ""Country"" column"	"SELECT * FROM Customers
+ORDER BY Country DESC"
+"select all customers from the ""Customers"" table, sorted by the ""Country"" and the ""CustomerName"" column."	"SELECT * FROM Customers
+ORDER BY Country, CustomerName"
+" select all customers from the ""Customers"" table, sorted ascending by the ""Country"" and descending by the ""CustomerName"" column"	"SELECT * FROM Customers
+ORDER BY Country ASC, CustomerName DESC"
+" list all customers with a NULL value in the ""Address"" field"	"SELECT CustomerName, ContactName, Address
+FROM Customers
+WHERE Address IS NULL"
+"list all customers with a value in the ""Address"" field"	"SELECT CustomerName, ContactName, Address
+FROM Customers
+WHERE Address IS NOT NULL"
+"update the contactname to ""Juan"" for all records where country is ""Mexico"""	"UPDATE Customers
+SET ContactName='Juan'
+WHERE Country='Mexico'"
+"delete the customer ""Alfreds Futterkiste"" from the ""Customers"" table"	DELETE FROM Customers WHERE CustomerName='Alfreds Futterkiste'
+"delete all rows in the ""Customers"" table, without deleting the table"	DELETE FROM Customers
+"select the first three records from the ""Customers"" table"	SELECT TOP 3 * FROM Customers
+"select the first three records from the ""Customers"" table"	"SELECT * FROM Customers
+LIMIT 3"
+"select the first three records from the ""Customers"" table"	"SELECT * FROM Customers
+WHERE ROWNUM <= 3"
+"select the first 50% of the records from the ""Customers"" table"	SELECT TOP 50 PERCENT * FROM Customers
+"select the first three records from the ""Customers"" table, where the country is ""Germany"""	"SELECT TOP 3 * FROM Customers
+WHERE Country='Germany'"
+"select the first three records from the ""Customers"" table, where the country is ""Germany"""	"SELECT * FROM Customers
+WHERE Country='Germany'
+LIMIT 3"
+"select the first three records from the ""Customers"" table, where the country is ""Germany"""	"SELECT * FROM Customers
+WHERE Country='Germany' AND ROWNUM <= 3"
+find the price of the cheapest product	"SELECT MIN(Price) AS SmallestPrice
+FROM Products"
+find the price of the most expensive product	"SELECT MAX(Price) AS LargestPrice
+FROM Products"
+find the number of products	"SELECT COUNT(ProductID)
+FROM Products"
+find the average price of all products	"SELECT AVG(Price)
+FROM Products"
+"find the sum of the ""Quantity"" fields in the ""OrderDetails"" table"	"SELECT SUM(Quantity)
+FROM OrderDetails"
+"select all customers with a CustomerName starting with ""a"""	"SELECT * FROM Customers
+WHERE CustomerName LIKE 'a%'"
+"select all customers with a CustomerName ending with ""a"""	"SELECT * FROM Customers
+WHERE CustomerName LIKE '%a'"
+"select all customers with a CustomerName that have ""or"" in any position"	"SELECT * FROM Customers
+WHERE CustomerName LIKE '%or%'"
+"select all customers with a CustomerName that have ""r"" in the second position"	"SELECT * FROM Customers
+WHERE CustomerName LIKE '_r%'"
+"select all customers with a CustomerName that starts with ""a"" and are at least 3 characters in length"	"SELECT * FROM Customers
+WHERE CustomerName LIKE 'a_%_%'"
+"select all customers with a ContactName that starts with ""a"" and ends with ""o"""	"SELECT * FROM Customers
+WHERE ContactName LIKE 'a%o'"
+"select all customers with a CustomerName that does NOT start with ""a"""	"SELECT * FROM Customers
+WHERE CustomerName NOT LIKE 'a%'"
